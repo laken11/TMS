@@ -47,7 +47,6 @@ class DjangoORMRoleRepository(RoleRepository):
             role = Role.objects.get(id=role_id)
             role.name = model.name
             role.description = model.description
-            role.permission = model.permission
             role.date_updated = model.date_updated
             role.save()
         except Role.DoesNotExist as e:
@@ -79,4 +78,10 @@ class DjangoORMRoleRepository(RoleRepository):
             return e
 
     def update_role_permissions(self, role_id, model: UpdateRolePermissionDto):
-        pass
+        try:
+            role = Role.objects.get(id=role_id)
+            role.permission = model.permission_id
+            role.date_updated = model.date_updated
+            role.save()
+        except Role.DoesNotExist as e:
+            raise e
