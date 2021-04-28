@@ -29,13 +29,51 @@ class PersonRepository(metaclass=ABCMeta):
 
 class DjangoORMPersonRepository(PersonRepository):
     def create_person(self, model: CreatePersonDto):
-        pass
+        person = Person()
+        person.id = model.id
+        person.email = model.email
+        person.first_name = model.first_name
+        person.last_name = model.last_name
+        person.password = model.password
+        person.telephone = model.telephone
+        person.date_created = model.date_created
+        person.save()
 
     def update_person(self, person_id, model: UpdatePersonDto):
-        pass
+        try:
+            person = Person.objects.get(id=person_id)
+            person.first_name = model.first_name
+            person.last_name = model.last_name
+            person.telephone = model.telephone
+            person.date_updated = model.date_updated
+        except Person.DoesNotExist as e:
+            raise e
 
     def list_person(self) -> List[ListPersonDto]:
-        pass
+        persons = Person.objects.all()
+        results: List[ListPersonDto] = []
+        for person in persons:
+            item = ListPersonDto()
+            item.first_name = person.first_name
+            item.last_name = person.last_name
+            item.telephone = person.telephone
+            item.role = person.role
+            results.append(item)
+        return results
 
     def person_details(self, person_id, model: PersonDetailsDto):
-        pass
+        try:
+            person = Person.objects.get(id=person_id)
+            person.id = model.id
+            person.email = model.email
+            person.first_name = model.first_name
+            person.last_name = model.last_name
+            person.telephone = model.telephone
+            person.address = model.address
+            person.role = model.role
+            person.permission = model.permission
+            person.date_created = model.date_created
+            person.date_updated = model.date_updated
+            return person
+        except Person.DoesNotExist as e:
+            raise e

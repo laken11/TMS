@@ -26,16 +26,57 @@ class RoleRepository(metaclass=ABCMeta):
         """Details of a role object"""
         raise NotImplementedError
 
+    @abstractmethod
+    def update_role_permissions(self, role_id, model: UpdateRolePermissionDto):
+        """Edit the permissions assigned to a role"""
+        raise NotImplementedError
+
 
 class DjangoORMRoleRepository(RoleRepository):
     def create_role(self, model: CreateRoleDto):
-        pass
+        role = Role()
+        role.id = model.id
+        role.name = model.name
+        role.description = model.description
+        role.date_created = model.date_created
+        role.permission = model.permission
+        role.save()
 
     def update_role(self, role_id, model: UpdateRoleDto):
-        pass
+        try:
+            role = Role.objects.get(id=role_id)
+            role.name = model.name
+            role.description = model.description
+            role.permission = model.permission
+            role.date_updated = model.date_updated
+            role.save()
+        except Role.DoesNotExist as e:
+            raise e
 
     def list_role(self) -> List[ListRoleDto]:
-        pass
+        roles = Role.objects.all()
+        results: List[ListRoleDto] = []
+        for role in roles:
+            item = ListRoleDto()
+            item.name = role.name
+            item.description = role.description
+            item.permission = role.permission
+            results.append(item)
+        return results
 
     def role_details(self, role_id, model: RoleDetailsDto):
+        try:
+            role = Role.objects.get(id=role_id)
+            result = RoleDetailsDto()
+            result.id = role.id
+            result.name = role.name
+            result.description = role.description
+            result.permission = role.permission
+            result.date_created = role.date_created
+            result.date_updated = role.date_updated
+            return result
+        except Role.DoesNotExist as e:
+            return e
+
+    def update_role_permissions(self, role_id, model: UpdateRolePermissionDto):
         pass

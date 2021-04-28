@@ -46,7 +46,24 @@ class DjangoORMPermissionRepository(PermissionRepository):
             return e
 
     def list_permission(self) -> List[ListPermissionDto]:
-        pass
+        permissions = Permission.objects.all()
+        results: List[ListPermissionDto] = []
+        for permission in permissions:
+            item = ListPermissionDto()
+            item.name = permission.name
+            item.description = permission.description
+            results.append(item)
+        return results
 
     def permission_details(self, permission_id, model: PermissionDetailsDto):
-        pass
+        try:
+            permission = Permission.objects.get(id=permission_id)
+            result = PermissionDetailsDto()
+            result.id = permission.id
+            result.name = permission.name
+            result.description = permission.description
+            result.date_created = permission.date_created
+            result.date_updated = permission.date_updated
+            return result
+        except Permission.DoesNotExist as e:
+            return e

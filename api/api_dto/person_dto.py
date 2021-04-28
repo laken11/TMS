@@ -28,7 +28,6 @@ class UpdatePersonDto:
 class ListPersonDto:
     first_name: str
     last_name: str
-    address: str
     telephone: str
     role: str
 
@@ -46,3 +45,8 @@ class PersonDetailsDto:
     permission: str
     date_created: date
     date_updated: date
+
+
+class UpdatePersonRoleDto:
+    person_id: str
+    role_id: str

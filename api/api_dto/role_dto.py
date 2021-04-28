@@ -29,3 +29,9 @@ class RoleDetailsDto:
     permission: str
     date_created: date
     date_updated: date
+
+
+class UpdateRolePermissionDto:
+    role_id: str
+    role_name: str
+    permission_id: str
