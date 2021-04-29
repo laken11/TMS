@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from api.Dto.AddressDto import *
-from api.models import Address
+from TMS.api.api_dto.AddressDto import *
+from TMS.api.models import Address
 
 
 class AddressRepository(metaclass=ABCMeta):

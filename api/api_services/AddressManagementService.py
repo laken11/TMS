@@ -1,9 +1,9 @@
 from abc import ABCMeta, abstractmethod
 from typing import List, Union
 
-from api.Dto.AddressDto import *
-from api.Repository.AddressRepository import AddressRepository
-from api.models import Address
+from TMS.api.api_repository.AddressRepository import AddressRepository
+from TMS.api.models import Address
+from TMS.api.api_dto.AddressDto import *
 
 
 class AddressManagementService(metaclass=ABCMeta):
