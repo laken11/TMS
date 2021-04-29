@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from TMS.api.api_dto.role_dto import *
-from TMS.api.api_repository.role_repository import RoleRepository
+from TMS.api.api_dto.RoleDto import *
+from TMS.api.api_repository.RoleRepository import RoleRepository
 from TMS.api.models import Role
 
 

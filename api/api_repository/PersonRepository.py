@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from TMS.api.api_dto.person_dto import *
+from TMS.api.api_dto.PersonDto import *
 from TMS.api.models import Person
 
 

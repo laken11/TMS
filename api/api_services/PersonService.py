@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from TMS.api.api_dto.person_dto import *
-from TMS.api.api_repository.person_repository import PersonRepository
+from TMS.api.api_dto.PersonDto import *
+from TMS.api.api_repository.PersonRepository import PersonRepository
 
 
 class PersonManagementService(metaclass=ABCMeta):

@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from TMS.api.api_dto.permission_dto import *
-from TMS.api.api_repository.permission_repository import PermissionRepository
+from TMS.api.api_dto.PermissionDto import *
+from TMS.api.api_repository.PermissionRepository import PermissionRepository
 
 
 class PermissionManagementService(metaclass=ABCMeta):

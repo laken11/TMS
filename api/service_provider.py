@@ -2,9 +2,9 @@ from typing import Callable
 
 from dependency_injector import containers, providers
 
-from TMS.api.api_repository.person_repository import *
-from TMS.api.api_repository.permission_repository import *
-from TMS.api.api_repository.role_repository import *
+from TMS.api.api_repository.PersonRepository import *
+from TMS.api.api_repository.PermissionRepository import *
+from TMS.api.api_repository.RoleRepository import *
 
 
 class Container(containers.DeclarativeContainer):
