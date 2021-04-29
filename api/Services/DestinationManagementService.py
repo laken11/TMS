@@ -37,7 +37,7 @@ class DefaultDestinationManagementService(DestinationManagementService):
     def create_destination(self, model: CreateDestinationDto):
         try:
             self.repository.destination_details(id=model.id)
-        except Address.DoesNotExist:
+        except Destination.DoesNotExist:
             self.repository.create_destination(model)
             return True
         else:
