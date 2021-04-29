@@ -26,6 +26,11 @@ class PersonRepository(metaclass=ABCMeta):
         """Details of a person object"""
         raise NotImplementedError
 
+    @abstractmethod
+    def update_person_role(self, person_id, model: UpdatePersonRoleDto):
+        """Updating a person role"""
+        raise NotImplementedError
+
 
 class DjangoORMPersonRepository(PersonRepository):
     def create_person(self, model: CreatePersonDto):
@@ -75,5 +80,13 @@ class DjangoORMPersonRepository(PersonRepository):
             person.date_created = model.date_created
             person.date_updated = model.date_updated
             return person
+        except Person.DoesNotExist as e:
+            raise e
+
+    def update_person_role(self, person_id, model: UpdatePersonRoleDto):
+        try:
+            person = Person.objects.get(id=person_id)
+            person.role = model.role_id
+            person.save()
         except Person.DoesNotExist as e:
             raise e
