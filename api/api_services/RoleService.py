@@ -1,9 +1,9 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from TMS.api.api_dto.RoleDto import *
-from TMS.api.api_repository.RoleRepository import RoleRepository
-from TMS.api.models import Role
+from api.api_dto.RoleDto import *
+from api.api_repository.RoleRepository import RoleRepository
+from api.models import Role
 
 
 class RoleManagementService(metaclass=ABCMeta):
