@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
-from api.dto.journey_dto import *
-from api.models import Vehicle, Journey
+from api.api_dto.journey_dto import *
+from api.models import Journey
 from typing import List, Union
 
 

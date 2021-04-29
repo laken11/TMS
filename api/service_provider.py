@@ -7,6 +7,8 @@ from api.api_repository.PermissionRepository import *
 from api.api_repository.RoleRepository import *
 from api.api_repository.AddressRepository import *
 from api.api_repository.DestinationRepository import *
+from api.api_repository.journey_repository import *
+from api.api_repository.vehicle_repository import *
 
 
 class Container(containers.DeclarativeContainer):
@@ -30,6 +32,14 @@ class Container(containers.DeclarativeContainer):
 
     destination_repository: Callable[[], DestinationRepository] = providers.Factory(
         DjangoORMDestinationRepository
+    )
+
+    vehicle_repository: Callable[[], VehicleRepository] = providers.Factory(
+        DjangoORMVehicleRepository
+    )
+
+    journey_repository: Callable[[], JourneyRepository] = providers.Factory(
+        DjangoORMJourneyRepository
     )
 
 service_provider = Container()
