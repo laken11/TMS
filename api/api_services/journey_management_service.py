@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from api.dto.journey_dto import *
-from api.repositories.journey_repository import JourneyRepository
+from api.api_repository.journey_repository import JourneyRepository
 from typing import List, Union
 from api.models import Journey
 
