@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from typing import List, Union
 
-from api.Dto.AddressDto import *
-from api.Repository.AddressRepository import AddressRepository
+from api.api_dto.AddressDto import *
+from api.api_repository.AddressRepository import AddressRepository
 from api.models import Address
 
 

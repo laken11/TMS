@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from typing import List
 
-from api.Dto.AddressDto import *
+from api.api_dto.AddressDto import *
 from api.models import Address
 
 
