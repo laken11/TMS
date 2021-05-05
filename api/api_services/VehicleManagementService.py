@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from api.dto.vehicle_dto import *
 from api.models import Vehicle
-from api.api_repository.vehicle_repository import VehicleRepository
+from api.api_repository.VehicleRepository import VehicleRepository
 from typing import List, Union
 
 
